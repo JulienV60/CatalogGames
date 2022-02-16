@@ -8,3 +8,18 @@ html {
   color: white;
   font-family: "Roboto", sans-serif;
 }
+
+.listejeux ul li a {
+  image-rendering: auto;
+  list-style: none;
+  color: white;
+  padding-top: 2rem;
+}
+.listejeux ul li img {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
