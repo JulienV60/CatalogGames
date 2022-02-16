@@ -18,7 +18,15 @@ h3 {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
-
+.intro a {
+  font-size: 5rem;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+}
 .listeplatform ul li img {
   padding-top: 1rem;
   padding-bottom: 2rem;

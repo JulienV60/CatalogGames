@@ -4,6 +4,11 @@
 {% endblock %}
 {% block content %}
 <h1>Platforms</h1>
+{% for item in numberOfPages %}
+<form method="get" action="/plateforms/{{item}}">
+<button type="submit">Page{{item}}</button>
+</form>
+{% endfor%}
 <div class="listeplatform">
 {%for item in platform %}
 <ul>
@@ -18,3 +23,4 @@
 </div>
 
 {% endblock %}
+
