@@ -3,12 +3,12 @@
 <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
 {% block content %}
-<h1>Catalog Games</h1>
+<h1>{{nameid}}</h1>
 <div class="listejeux">
 {%for item in listGame %}
 <ul>
 <li>
-<a href="/Games/game/{{item.id}}">{{item.name}} </a>
+<a href="/Games/game/{{item.name}}/{{item.id}}">{{item.name}} </a>
 <img href="{{item.logo.url}}"src="{{item.cover.url}}">
 </li>
 </ul>
