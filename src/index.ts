@@ -1,6 +1,7 @@
 import express from "express";
 import nunjucks from "nunjucks";
 import apiCall from "@fewlines-education/request";
+import { cp } from "fs";
 
 const app = express();
 app.use(express.static("Public"));
@@ -13,33 +14,39 @@ app.get("/", (request, response) => {
       throw error;
     }
     const data = JSON.parse(body);
-    response.render("home", { platform: data.platforms });
+
+    response.render("home", { platforminfo: data, platform: data.platforms });
   });
 });
 app.get("/Games/:itemid", (request, response) => {
   const routeParameters = request.params;
-  const id = routeParameters.itemid;
+  const idplateform = routeParameters.itemid;
 
-  apiCall(`http://videogame-api.fly.dev/games/platforms/${id}`, (error, body) => {
+  apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}`, (error, body) => {
     if (error) {
       throw error;
     }
     const data = JSON.parse(body);
+
     response.render("games", { listGame: data.games });
   });
 });
+
 app.get("/Games/game/:itemid", (request, response) => {
   const routeParameters = request.params;
-  const id = routeParameters.itemid;
+  const idgame = routeParameters.itemid;
 
-  apiCall(`http://videogame-api.fly.dev/games/${id}`, (error, body) => {
+  apiCall(`http://videogame-api.fly.dev/games/${idgame}`, (error, body) => {
     if (error) {
       throw error;
     }
     const data = JSON.parse(body);
-    response.render("descriptiongame", { game: data.screenshots });
+    console.log(data);
+
+    response.render("descriptiongame", { gameinfo: data, gamegenres: data.genres, gamescreenshots: data.screenshots });
   });
 });
+
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 });

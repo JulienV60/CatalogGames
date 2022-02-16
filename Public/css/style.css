@@ -8,18 +8,54 @@ html {
   color: white;
   font-family: "Roboto", sans-serif;
 }
-
-.listejeux ul li a {
-  image-rendering: auto;
-  list-style: none;
-  color: white;
-  padding-top: 2rem;
-}
-.listejeux ul li img {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+h1,
+h2,
+h3 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.listeplatform ul li img {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 44%;
+}
+.listeplatform ul li a {
+  list-style: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.listejeux ul li a {
+  list-style: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.listejeux ul li img {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 40%;
+}
+.listejeu img {
+  margin: auto;
+  position: relative;
+  border-radius: 10%;
+  width: 30%;
+  height: 30%;
+}
+.coverjeu img {
+  width: 10%;
+  height: 10%;
+  padding-bottom: 2rem;
+  float: center;
 }
