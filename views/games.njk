@@ -3,22 +3,25 @@
 <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
 {% block content %}
-<h1>{{nameid}}</h1>
-{% for item in numberofPages %}
-<form method="get" action="/{{item}}">
-<button type="submit">Page{{item}}</button>
+<h1>{{name}}</h1>
+
+{% for page in numberOfPagess %}
+<form method="get" action="/Games/{{name}}/{{id}}/{{page}}">
+<button type="submit">Page{{page}}</button>
 </form>
 {% endfor%}
-<div class="listPage"
 <form method="get" action="/">
 <button type="submit">Return Homepage</button>
 </form>
+
+<div class="listPage">
+
 </div>
 <div class="listejeux">
-{%for item in listGame %}
+{% for item in listGame %}
 <ul>
 <li>
-<a href="/Games/game/{{item.name}}/{{item.id}}">{{item.name}} </a>
+<a href="/Game/{{item.id}}/{{item.name}}">{{item.name}} </a>
 <img href="{{item.logo.url}}"src="{{item.cover.url}}">
 </li>
 </ul>

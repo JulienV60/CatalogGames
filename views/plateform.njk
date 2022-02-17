@@ -2,24 +2,35 @@
 {%block css %}
 <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
+
 {% block content %}
+
 <h1>Platforms</h1>
-{% for item in numberOfPages %}
-<form method="get" action="/plateforms/{{item}}">
-<button type="submit">Page{{item}}</button>
-</form>
+
+{% for page in numberOfPages %}
+
+  <form method="get" action="/plateforms/{{page}}">
+
+<button type="submit">Page{{page}}</button>
+
+  </form>
+
 {% endfor%}
+
 <div class="listeplatform">
+
 {%for item in platform %}
+
 <ul>
-<li>
+  <li>
 
-
-<a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
-<img href="{{item.logo.url}}" src="{{item.logo.url}}">
-</li>
+      <a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
+      <img href="{{item.logo.url}}" src="{{item.logo.url}}">
+  </li>
 </ul>
+
 {% endfor %}
+
 </div>
 
 {% endblock %}

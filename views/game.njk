@@ -5,11 +5,7 @@
 
 {% block content %}
 <h1>{{gameinfo.name}}</h1>
-{% for item in numberofPages %}
-<form method="get" action="/{{item}}">
-<button type="submit">Page{{item}}</button>
-</form>
-{% endfor%}
+
 <form method="get" action="/">
 <button type="submit">Return Homepage</button>
 </form>

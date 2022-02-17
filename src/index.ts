@@ -35,7 +35,6 @@ app.get("/plateforms", (request, response) => {
 app.get("/plateforms/:item", (request, response) => {
   const routeParameters = request.params;
   const page = routeParameters.item;
-  console.log(page);
   apiCall(`http://videogame-api.fly.dev/platforms?page=${page}`, (error, body) => {
     if (error) {
       throw error;
@@ -49,27 +48,50 @@ app.get("/plateforms/:item", (request, response) => {
     response.render("plateform", { numberOfPages, platforminfo: data, platform: data.platforms });
   });
 });
-
-app.get("/Games/:itemname/:itemid", (request, response) => {
+/// GAMES/
+app.get("/Games/:itemname/:itemid/", (request, response) => {
   const routeParameters = request.params;
   const idplateform = routeParameters.itemid;
   const idname = routeParameters.itemname;
+
+  apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const data = JSON.parse(body);
+    const numberOfPagess = [];
+    for (let i = 1; i < data.total / 20 + 1; i++) {
+      numberOfPagess.push(i);
+    }
+
+    response.render("games", { numberOfPagess, id: idplateform, name: idname, listGame: data.games });
+  });
+});
+
+///GAMES/NomDeLaPlateForm/ListeJeux/Page
+
+app.get("/Games/:itemname/:itemid/:item", (request, response) => {
+  const routeParameters = request.params;
+  const idname = routeParameters.itemname;
+  const idplateform = routeParameters.itemid;
+  const page = routeParameters.item;
 
   apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}?page=${page}`, (error, body) => {
     if (error) {
       throw error;
     }
     const data = JSON.parse(body);
-    const numberofPages = [];
+
+    const numberOfPagess = [];
     for (let i = 1; i < data.total / 20 + 1; i++) {
-      numberofPages.push(i);
+      numberOfPagess.push(i);
     }
 
-    response.render("games", { numberofPages, nameid: idname, listGame: data.games });
+    response.render("games", { numberOfPagess, id: idplateform, name: idname, listGame: data.games });
   });
 });
-
-app.get("/Games/game/:itemname/:itemid", (request, response) => {
+//// GAMES/GAME
+app.get("/Game/:itemid/:itemname", (request, response) => {
   const routeParameters = request.params;
   const idgame = routeParameters.itemid;
 
@@ -83,14 +105,13 @@ app.get("/Games/game/:itemname/:itemid", (request, response) => {
       numberofPages.push(i);
     }
     response.render("game", {
-      numberofPages,
       gameinfo: data,
       gamegenres: data.genres,
       gamescreenshots: data.screenshots,
     });
   });
 });
-
+/// LANCEMENT SERVEUR
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 });
