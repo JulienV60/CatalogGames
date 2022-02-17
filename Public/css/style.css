@@ -8,6 +8,13 @@ html {
   color: white;
   font-family: "Roboto", sans-serif;
 }
+.fondnav {
+  height: 5rem;
+  padding-left: 2rem;
+  display: flex;
+  background: #333;
+}
+
 h1,
 h2,
 h3 {
@@ -18,15 +25,27 @@ h3 {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
-.intro a {
-  font-size: 5rem;
-  color: white;
+.intro {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+.intro ul a {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4rem;
+  list-style: none;
+  font-size: 3rem;
+  color: white;
 }
+.intro ul li img {
+  margin-left: 31rem;
+  padding-top: 2rem;
+  width: 30%;
+  height: 30%;
+}
+
 .listeplatform ul {
   list-style: none;
   list-style-position: outside;

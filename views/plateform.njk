@@ -1,41 +1,32 @@
 {% extends "layout.njk" %}
+
 {%block css %}
-<link rel="stylesheet" href="Public/css/style.css"/>
+  <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
 
 {% block content %}
+  <h1>Platforms</h1>
+  <select name="page" id="page-select" onChange="location=this.value;">
 
-<h1>Platforms</h1>
+    {% for page in numberOfPages %}
+      <option value="/plateforms/{{page}}">Page {{page}}</option>
+    {% endfor%}
 
+  </select>
+      <div class="listeplatform">
 
-<select>
-{% for page in numberOfPages %}
+        {%for item in platform %}
 
-<form method="get" action="/plateforms/{{page}}">
+          <ul>
+            <li>
+              <a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
+              <img href="{{item.logo.url}}" src="{{item.logo.url}}">
+            </li>
+          </ul>
 
-<option value="{{page}}">Page {{page}}
+        {% endfor %}
 
-</option>
-</form>
-
-{% endfor%}
-</select>
-
-<div class="listeplatform">
-
-{%for item in platform %}
-
-<ul>
-  <li>
-
-      <a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
-      <img href="{{item.logo.url}}" src="{{item.logo.url}}">
-  </li>
-</ul>
-
-{% endfor %}
-
-</div>
+      </div>
 
 {% endblock %}
 

@@ -1,32 +1,40 @@
 {% extends "layout.njk" %}
+
 {%block css %}
-<link rel="stylesheet" href="Public/css/style.css"/>
+  <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
+
 {% block content %}
-<h1>{{name}}</h1>
+  <h1>{{name}}</h1>
+  <select name="page" id="page-select" onChange="location=this.value;">
 
-{% for page in numberOfPagess %}
-<form method="get" action="/Games/{{name}}/{{id}}/{{page}}">
-<button type="submit">Page{{page}}</button>
-</form>
-{% endfor%}
-<form method="get" action="/">
-<button type="submit">Return Homepage</button>
-</form>
+    {% for page in numberOfPagess %}
 
-<div class="listPage">
+      <option value="/Games/{{name}}/{{id}}/{{page}}">Page {{page}}</option>
 
-</div>
-<div class="listejeux">
-{% for item in listGame %}
-<ul>
-<li>
-<a href="/Game/{{item.id}}/{{item.name}}">{{item.name}} </a>
-<img href="{{item.logo.url}}"src="{{item.cover.url}}">
-</li>
-</ul>
-{% endfor %}
-</div>
+    {% endfor%}
+
+  </select>
+
+  <form method="get" action="/plateforms">
+    <button type="submit">Return Homepage</button>
+  </form>
+
+
+  <div class="listejeux">
+
+    {% for item in listGame %}
+
+      <ul>
+        <li>
+          <a href="/Game/{{item.id}}/{{item.name}}">{{item.name}} </a>
+          <img href="{{item.logo.url}}"src="{{item.cover.url}}">
+        </li>
+      </ul>
+
+    {% endfor %}
+
+  </div>
 
 
 {% endblock %}

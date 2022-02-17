@@ -1,35 +1,34 @@
 {% extends "layout.njk" %}
+
 {%block css %}
-<link rel="stylesheet" href="Public/css/style.css"/>
+  <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
 
 {% block content %}
-<h1>{{gameinfo.name}}</h1>
+ <h1>{{gameinfo.name}}</h1>
 
-<form method="get" action="/">
-<button type="submit">Return Homepage</button>
-</form>
+    <form method="get" action="/plateforms">
+     <button type="submit">Return Homepage</button>
+    </form>
 
-{%for item in gamegenres %}
-
-<h2>Genre : {{item.name}}</h2>
-{% endfor %}
-<div class="coverjeu">
-<img src="{{gameinfo.cover.url}}">
-</div>
+   {%for item in gamegenres %}
+      <h2>Genre : {{item.name}}</h2>
+   {% endfor %}
 
 
-<div class="listejeu">
+    <div class="coverjeu">
+      <img src="{{gameinfo.cover.url}}">
+    </div>
 
 
-{%for item in gamescreenshots %}
+  <div class="listejeu">
 
-<img href="{{item.url}}"src="{{item.url}}">
+    {%for item in gamescreenshots %}
 
-{% endfor %}
-</div>
+      <img href="{{item.url}}"src="{{item.url}}">
 
+    {% endfor %}
 
-
+  </div>
 
 {% endblock %}

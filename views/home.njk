@@ -1,15 +1,27 @@
 {% extends "layout.njk" %}
+
 {%block css %}
-<link rel="stylesheet" href="Public/css/style.css"/>
+  <link rel="stylesheet" href="Public/css/style.css"/>
 {% endblock %}
+
 {% block content %}
-<h1>DEV CATALOGUE</h1>
-<div class="intro">
-<a href="/plateforms">CLICK HERE </a>
-</div>
 
+  <div class ="fondnav">
+    <h1>DEV CATALOGUE</h1>
+  </div>
 
+  <div class="intro">
+    <ul>
+      <li>
+        <a href="/plateforms">Platforms </a>
+        <img href="/plateforms" src="https://unity.com/sites/default/files/styles/810_scale_width/public/2020-05/Console-Platform-holders.jpg?itok=lwaGjEUA">
+      </li>
+      <li>
+        <a href="/games">Games</a>
+        <img href="/games" src="https://thegeek.site/wp-content/uploads/sites/3/2020/07/d33ced3fa3021e838e1c17da4eade390.png">
+      </li>
 
+  </div>
 
 {% endblock %}
 
