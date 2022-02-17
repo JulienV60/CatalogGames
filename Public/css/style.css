@@ -27,6 +27,14 @@ h3 {
   align-items: center;
   padding-top: 4rem;
 }
+.listeplatform ul {
+  list-style: none;
+  list-style-position: outside;
+  padding-left: 2rem;
+}
+.listeplatform ul li {
+  list-style: none;
+}
 .listeplatform ul li img {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -39,8 +47,14 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
-
+.listejeux ul {
+  list-style: none;
+}
+.listejeux ul li {
+  list-style: none;
+}
 .listejeux ul li a {
   list-style: none;
   color: white;
@@ -53,6 +67,12 @@ h3 {
   padding-top: 1rem;
   padding-bottom: 2rem;
   padding-left: 40%;
+}
+.listejeu ul {
+  list-style: none;
+}
+.listejeu ul li {
+  list-style: none;
 }
 .listejeu img {
   margin: auto;

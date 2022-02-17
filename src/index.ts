@@ -52,6 +52,7 @@ app.get("/plateforms/:item", (request, response) => {
 app.get("/Games/:itemname/:itemid/", (request, response) => {
   const routeParameters = request.params;
   const idplateform = routeParameters.itemid;
+
   const idname = routeParameters.itemname;
 
   apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}`, (error, body) => {

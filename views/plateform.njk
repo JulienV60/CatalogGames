@@ -7,15 +7,19 @@
 
 <h1>Platforms</h1>
 
+
+<select>
 {% for page in numberOfPages %}
 
-  <form method="get" action="/plateforms/{{page}}">
+<form method="get" action="/plateforms/{{page}}">
 
-<button type="submit">Page{{page}}</button>
+<option value="{{page}}">Page {{page}}
 
-  </form>
+</option>
+</form>
 
 {% endfor%}
+</select>
 
 <div class="listeplatform">
 
