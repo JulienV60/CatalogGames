@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{%block css %}
+  <link rel="stylesheet" href="Public/css/style.css"/>
+{% endblock %}
+
+{% block content %}
+  <h1>Games</h1>
+  <select name="page" id="page-select" onChange="location=this.value;">
+
+    {% for page in numberOfPages %}
+      <option value="/allGames/{{page}}">Page {{page}}</option>
+    {% endfor%}
+
+  </select>
+      <div class="listeplatform">
+
+        {%for item in datagames %}
+
+          <ul>
+            <li>
+              <a href="/allGames/{{item.name}}/{{item.id}}">{{item.name}} </a>
+              <img href="{{item.cover.url}}" src="{{item.cover.url}}">
+            </li>
+          </ul>
+
+        {% endfor %}
+
+      </div>
+
+{% endblock %}
+

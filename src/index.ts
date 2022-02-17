@@ -13,7 +13,64 @@ app.set("view engine", "njk");
 app.get("/", (request, response) => {
   response.render("home");
 });
+//// GAMES/
+app.get("/allGames", (request, response) => {
+  apiCall("http://videogame-api.fly.dev/games", (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const data = JSON.parse(body);
+    const numberOfPages = [];
+    for (let i = 1; i < data.total / 20 + 1; i++) {
+      numberOfPages.push(i);
+    }
+    const datagames = data.games;
 
+    response.render("allGames", { numberOfPages, datagames });
+  });
+});
+
+///GAMES/PAGE
+app.get("/allGames/:item", (request, response) => {
+  const routeParameters = request.params;
+  const page = routeParameters.item;
+  console.log(page);
+  apiCall(`http://videogame-api.fly.dev/games?page=${page}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const data = JSON.parse(body);
+    const numberOfPages = [];
+    for (let i = 1; i < data.total / 20 + 1; i++) {
+      numberOfPages.push(i);
+    }
+    const datagames = data.games;
+
+    response.render("allGames", { numberOfPages, datagames });
+  });
+});
+//GAMES/GAME
+app.get("/allGames/:itemid/:itemname", (request, response) => {
+  const routeParameters = request.params;
+  const idgame = routeParameters.itemname;
+
+  apiCall(`http://videogame-api.fly.dev/games/${idgame}`, (error, body) => {
+    if (error) {
+      throw error;
+    }
+    const data = JSON.parse(body);
+    const numberofPages = [];
+    for (let i = 0; i < data.total / 20 + 1; i++) {
+      numberofPages.push(i);
+    }
+
+    response.render("allGamesgame", {
+      gameinfo: data,
+      gamegenres: data.genres,
+      gamescreenshots: data.screenshots,
+    });
+  });
+});
 ///PLATEFORMS
 ///////////////////////////////////////////////
 
