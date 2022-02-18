@@ -30,8 +30,12 @@
 </div>
 
 <div class="footer">
-<a href="/plateforms/{{numberOfPages[0]}}"><<</a>
-  {% if indexPage == 0 %}
+{%if indexPage == 1 %}
+      {% else %}
+<a href="/plateforms/{{numberOfPages[O]}}"><<</a>
+{%endif%}
+
+  {% if indexPage == 1  %}
   {% else %}
 <a href="/plateforms/{{indexPage-1}}"><</a>
   {% endif %}
@@ -41,6 +45,7 @@
       {% set iterator = page + indexPage %}
       {% if iterator <= limit + (indexPage) %}
       {% if iterator <= numberOfPages.length %}
+
        <a href="/plateforms/{{iterator}}">{{iterator}}</a>
       {% endif %}
       {% endif %}
@@ -55,7 +60,10 @@
       {% else %}
       <a href="/plateforms/{{indexPage+1}}">></a>
       {% endif %}
+      {%if indexPage==numberOfPages.length %}
+      {% else %}
 <a href="/plateforms/{{numberOfPages.length}}">>></a>
+{%endif%}
 </div>
 {% endblock %}
 

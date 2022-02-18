@@ -28,8 +28,9 @@
     {% endfor %}
 </div>
 <div class="footer">
+
 <a href="/Games/{{name}}/{{id}}/{{numberOfPagess[0]}}"><<</a>
- {% if indexPage == 0 %}
+ {% if indexPage == 1 %}
   {% else %}
 <a href="/Games/{{name}}/{{id}}/{{indexPage-1}}"><</a>
   {% endif %}
@@ -49,12 +50,14 @@
       {% endif %}
       {% endif %}
       {% endfor %}
-      {% if indexPage == numberOfPages.length %}
+      {% if indexPage == numberOfPagess.length %}
       {% else %}
      <a href="/Games/{{name}}/{{id}}/{{indexPage+1}}">></a>
       {% endif %}
-
+{%if indexPage==numberOfPagess.length %}
+      {% else %}
 <a href="/Games/{{name}}/{{id}}/{{numberOfPagess.length}}">>></a>
+{%endif%}
 </div>
 
 

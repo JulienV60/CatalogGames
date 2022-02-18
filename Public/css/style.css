@@ -69,6 +69,7 @@ html {
   padding-left: 2rem;
   padding-bottom: 1rem;
 }
+
 .content a {
   display: flex;
   flex-direction: column;
@@ -98,6 +99,10 @@ html {
   padding-top: 1rem;
   padding-left: 1rem;
 }
+.coverjeu img:hover {
+  width: 20%;
+  height: 20%;
+}
 .h2screenshoots {
   padding-left: 3rem;
   padding-top: 2rem;
@@ -114,6 +119,10 @@ html {
   padding-top: 1rem;
   width: 30%;
   height: 30%;
+}
+.screenshoots img:hover {
+  width: 80%;
+  height: 80%;
 }
 .footer {
   display: flex;
