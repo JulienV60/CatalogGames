@@ -34,8 +34,9 @@ app.get("/allGames", (request, response) => {
 app.get("/allGames/:item", (request, response) => {
   const routeParameters = request.params;
   const page = routeParameters.item;
-  console.log(page);
-  apiCall(`http://videogame-api.fly.dev/games?page=${page}`, (error, body) => {
+  const indexPage = parseInt(page);
+
+  apiCall(`http://videogame-api.fly.dev/games?page=${indexPage}`, (error, body) => {
     if (error) {
       throw error;
     }
@@ -46,7 +47,7 @@ app.get("/allGames/:item", (request, response) => {
     }
     const datagames = data.games;
 
-    response.render("allGames", { numberOfPages, datagames });
+    response.render("allGames", { numberOfPages, datagames, indexPage });
   });
 });
 //GAMES/GAME
@@ -92,7 +93,8 @@ app.get("/plateforms", (request, response) => {
 app.get("/plateforms/:item", (request, response) => {
   const routeParameters = request.params;
   const page = routeParameters.item;
-  apiCall(`http://videogame-api.fly.dev/platforms?page=${page}`, (error, body) => {
+  const indexPage = parseInt(page);
+  apiCall(`http://videogame-api.fly.dev/platforms?page=${indexPage}`, (error, body) => {
     if (error) {
       throw error;
     }
@@ -102,7 +104,12 @@ app.get("/plateforms/:item", (request, response) => {
       numberOfPages.push(i);
     }
 
-    response.render("plateform", { numberOfPages, platforminfo: data, platform: data.platforms });
+    response.render("plateform", {
+      numberOfPages,
+      platforminfo: data,
+      platform: data.platforms,
+      indexPage,
+    });
   });
 });
 /// PLATEFORM/GAMES/
@@ -132,8 +139,9 @@ app.get("/Games/:itemname/:itemid/:item", (request, response) => {
   const idname = routeParameters.itemname;
   const idplateform = routeParameters.itemid;
   const page = routeParameters.item;
+  const indexPage = parseInt(page);
 
-  apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}?page=${page}`, (error, body) => {
+  apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}?page=${indexPage}`, (error, body) => {
     if (error) {
       throw error;
     }
@@ -144,7 +152,7 @@ app.get("/Games/:itemname/:itemid/:item", (request, response) => {
       numberOfPagess.push(i);
     }
 
-    response.render("games", { numberOfPagess, id: idplateform, name: idname, listGame: data.games });
+    response.render("games", { numberOfPagess, id: idplateform, name: idname, listGame: data.games, indexPage });
   });
 });
 //// PLATEFORMS/GAMES/GAME

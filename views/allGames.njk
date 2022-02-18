@@ -5,14 +5,10 @@
 {% endblock %}
 
 {% block content %}
+<div class="nav">
   <h1>Games</h1>
-  <select name="page" id="page-select" onChange="location=this.value;">
+  </div>
 
-    {% for page in numberOfPages %}
-      <option value="/allGames/{{page}}">Page {{page}}</option>
-    {% endfor%}
-
-  </select>
       <div class="listeplatform">
 
         {%for item in datagames %}
@@ -27,6 +23,37 @@
         {% endfor %}
 
       </div>
+  <div class="footer">
+<a href="/allGames/{{numberOfPages[0]}}"><<</a>
+ {% if indexPage == 0 %}
+  {% else %}
+<a href="/allGames/{{indexPage-1}}"><</a>
+  {% endif %}
+
+
+      {% set limit = 10 %}
+      {% for page in numberOfPages %}
+      {% if indexPage > limit %}
+      {% set iterator = page + indexPage %}
+      {% if iterator <= limit +(indexPage) %}
+      {% if iterator <= numberOfPages.length %}
+     <a href="/allGames/{{iterator}}">{{iterator}}</a>
+      {% endif %}
+      {% endif %}
+      {% else %}
+      {% if page<= limit %}
+      <a href="/allGames/{{page}}">{{page}}</a>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      {% if indexPage == numberOfPages.length %}
+      {% else %}
+      <a href="/allGames/{{indexPage+1}}">></a>
+      {% endif %}
+
+<a href="/allGames/{{numberOfPages.length}}">>></a>
+</div>
+
 
 {% endblock %}
 

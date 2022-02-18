@@ -5,24 +5,9 @@
 {% endblock %}
 
 {% block content %}
+<div class="nav">
   <h1>{{name}}</h1>
-  <select name="page" id="page-select" onChange="location=this.value;">
-
-    {% for page in numberOfPagess %}
-
-      <option value="/Games/{{name}}/{{id}}/{{page}}">Page {{page}}</option>
-
-    {% endfor%}
-
-  </select>
-
-  <form method="get" action="/plateforms">
-    <button type="submit">Return Homepage</button>
-  </form>
-
-
-  <div class="listejeux">
-
+</div>
     {% for item in listGame %}
 
       <ul>
@@ -34,7 +19,35 @@
 
     {% endfor %}
 
-  </div>
+<div class="footer">
+<a href="/Games/{{name}}/{{id}}/{{numberOfPagess[0]}}"><<</a>
+ {% if indexPage == 0 %}
+  {% else %}
+<a href="/Games/{{name}}/{{id}}/{{indexPage-1}}"><</a>
+  {% endif %}
+
+      {% set limit = 10 %}
+      {% for page in numberOfPagess %}
+      {% if indexPage > limit %}
+      {% set iterator = page + indexPage %}
+      {% if iterator <= limit + (indexPage) %}
+      {% if iterator <= numberOfPagess.length %}
+       <a href="/Games/{{name}}/{{id}}/{{iterator}}">{{iterator}}</a>
+      {% endif %}
+      {% endif %}
+      {% else %}
+      {% if page <= limit %}
+    <a href="/Games/{{name}}/{{id}}/{{page}}">{{page}}</a>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      {% if indexPage == numberOfPages.length %}
+      {% else %}
+     <a href="/Games/{{name}}/{{id}}/{{indexPage+1}}">></a>
+      {% endif %}
+
+<a href="/Games/{{name}}/{{id}}/{{numberOfPagess.length}}">>></a>
+</div>
 
 
 {% endblock %}

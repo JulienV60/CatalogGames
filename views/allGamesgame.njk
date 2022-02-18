@@ -5,15 +5,18 @@
 {% endblock %}
 
 {% block content %}
+<div class="nav">
  <h1>{{gameinfo.name}}</h1>
+  {%for item in gamegenres %}
+      <h2>Genre : {{item.name}}</h2>
+   {% endfor %}
+ </div>
 
-    <form method="get" action="/plateforms">
+    <form method="get" action="/">
      <button type="submit">Return Homepage</button>
     </form>
 
-   {%for item in gamegenres %}
-      <h2>Genre : {{item.name}}</h2>
-   {% endfor %}
+
 
 
     <div class="coverjeu">
