@@ -8,22 +8,27 @@
 
 <div class="nav">
     <h1>Platforms</h1>
+    <div class="navform">
+     <form method="get" action="/">
+     <button type="submit">Homepage</button>
+    </form>
+    </div>
 </div>
 
-<div class="listeplatform">
 
-        {%for item in platform %}
 
-          <ul>
-            <li>
-              <a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
-              <img href="{{item.logo.url}}" src="{{item.logo.url}}">
-            </li>
-          </ul>
 
-        {% endfor %}
+<div class="container">
+          {%for item in platform %}
+<div class="content">
+<a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
+<img src="{{item.logo.url}}">
 
 </div>
+
+          {% endfor %}
+</div>
+
 <div class="footer">
 <a href="/plateforms/{{numberOfPages[0]}}"><<</a>
   {% if indexPage == 0 %}

@@ -7,18 +7,26 @@
 {% block content %}
 <div class="nav">
   <h1>{{name}}</h1>
+  <div class="navform">
+     <form method="get" action="/">
+     <button type="submit">Homepage</button>
+    </form>
+    </div>
 </div>
-    {% for item in listGame %}
 
-      <ul>
-        <li>
+
+
+
+<div class="container">
+    {% for item in listGame %}
+    <div class="content">
+
           <a href="/Game/{{item.id}}/{{item.name}}">{{item.name}} </a>
           <img href="{{item.logo.url}}"src="{{item.cover.url}}">
-        </li>
-      </ul>
 
+</div>
     {% endfor %}
-
+</div>
 <div class="footer">
 <a href="/Games/{{name}}/{{id}}/{{numberOfPagess[0]}}"><<</a>
  {% if indexPage == 0 %}

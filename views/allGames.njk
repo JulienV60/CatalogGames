@@ -7,22 +7,25 @@
 {% block content %}
 <div class="nav">
   <h1>Games</h1>
+  <div class="navform">
+     <form method="get" action="/">
+     <button type="submit">Homepage</button>
+    </form>
+    </div>
   </div>
 
-      <div class="listeplatform">
+     <div class="container">
 
         {%for item in datagames %}
+<div class="content">
 
-          <ul>
-            <li>
               <a href="/allGames/{{item.name}}/{{item.id}}">{{item.name}} </a>
               <img href="{{item.cover.url}}" src="{{item.cover.url}}">
-            </li>
-          </ul>
+</div>
 
         {% endfor %}
+</div>
 
-      </div>
   <div class="footer">
 <a href="/allGames/{{numberOfPages[0]}}"><<</a>
  {% if indexPage == 0 %}

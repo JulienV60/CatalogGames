@@ -8,23 +8,28 @@
 <div class="nav">
  <h1>{{gameinfo.name}}</h1>
   {%for item in gamegenres %}
-      <h2>Genre : {{item.name}}</h2>
+      <h2><u>Genre:</u> {{item.name}}</h2>
    {% endfor %}
- </div>
-
-    <form method="get" action="/">
-     <button type="submit">Return Homepage</button>
+   <div class="navform">
+     <form method="get" action="/">
+     <button type="submit">Homepage</button>
     </form>
+    </div>
+ </div>
 
 
 
 
     <div class="coverjeu">
+     <h2><u>Cover<u/></h2>
       <img src="{{gameinfo.cover.url}}">
     </div>
 
 
-  <div class="listejeu">
+ <div class="h2screenshoots">
+  <h2><u>Screenshoots<u/></h2>
+  </div>
+  <div class="screenshoots">
 
     {%for item in gamescreenshots %}
 
