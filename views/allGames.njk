@@ -27,13 +27,16 @@
 </div>
 
   <div class="footer">
+  {%if indexPage == 1 or indexPage == NaN %}
+  <button disabled="disabled"><<</button>
+      {% else %}
 <a href="/allGames/{{numberOfPages[0]}}"><<</a>
- {% if indexPage == 0 %}
+{%endif%}
+ {% if indexPage == 1 or indexPage == NaN %}
+   <button disabled="disabled"><</button>
   {% else %}
 <a href="/allGames/{{indexPage-1}}"><</a>
   {% endif %}
-
-
       {% set limit = 10 %}
       {% for page in numberOfPages %}
       {% if indexPage > limit %}
@@ -45,16 +48,21 @@
       {% endif %}
       {% else %}
       {% if page<= limit %}
+
       <a href="/allGames/{{page}}">{{page}}</a>
       {% endif %}
       {% endif %}
       {% endfor %}
       {% if indexPage == numberOfPages.length %}
+        <button disabled="disabled">></button>
       {% else %}
       <a href="/allGames/{{indexPage+1}}">></a>
       {% endif %}
-
+{%if indexPage==numberOfPages.length %}
+  <button disabled="disabled">>></button>
+      {% else %}
 <a href="/allGames/{{numberOfPages.length}}">>></a>
+{%endif%}
 </div>
 
 

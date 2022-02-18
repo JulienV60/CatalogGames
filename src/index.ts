@@ -86,7 +86,7 @@ app.get("/plateforms", (request, response) => {
       numberOfPages.push(i);
     }
 
-    response.render("plateform", { numberOfPages, platforminfo: data, platform: data.platforms });
+    response.redirect("plateforms/1");
   });
 });
 ///PLATEFORMS/PAGE
@@ -117,6 +117,7 @@ app.get("/Games/:itemname/:itemid/", (request, response) => {
   const routeParameters = request.params;
   const idplateform = routeParameters.itemid;
   const idname = routeParameters.itemname;
+  console.log(routeParameters);
 
   apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}`, (error, body) => {
     if (error) {

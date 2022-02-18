@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="nav">
-  <h1>{{name}}</h1>
+  <h1>Games of {{name}}</h1>
   <div class="navform">
      <form method="get" action="/">
      <button type="submit">Homepage</button>
@@ -29,15 +29,19 @@
 </div>
 <div class="footer">
 
+{%if indexPage == 1 or indexPage == NaN %}
+<button disabled="disabled"><<</button>
+      {% else %}
 <a href="/Games/{{name}}/{{id}}/{{numberOfPagess[0]}}"><<</a>
- {% if indexPage == 1 %}
+ {%endif%}
+ {% if indexPage == 1 or indexPage == NaN  %}
+   <button disabled="disabled"><</button>
   {% else %}
-<a href="/Games/{{name}}/{{id}}/{{indexPage-1}}"><</a>
+<a href="//Games/{{name}}/{{id}}/{{indexPage-1}}"><</a>
   {% endif %}
-
       {% set limit = 10 %}
       {% for page in numberOfPagess %}
-      {% if indexPage > limit %}
+      {% if indexPage >= limit %}
       {% set iterator = page + indexPage %}
       {% if iterator <= limit + (indexPage) %}
       {% if iterator <= numberOfPagess.length %}
@@ -51,10 +55,12 @@
       {% endif %}
       {% endfor %}
       {% if indexPage == numberOfPagess.length %}
+         <button disabled="disabled">></button>
       {% else %}
      <a href="/Games/{{name}}/{{id}}/{{indexPage+1}}">></a>
       {% endif %}
 {%if indexPage==numberOfPagess.length %}
+   <button disabled="disabled">></button>
       {% else %}
 <a href="/Games/{{name}}/{{id}}/{{numberOfPagess.length}}">>></a>
 {%endif%}

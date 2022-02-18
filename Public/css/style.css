@@ -130,13 +130,17 @@ html {
   justify-content: center;
   align-items: center;
   height: 2.5rem;
-
   background: #333;
 }
 
 .footer a {
-  color: #444;
-  background: white;
+  color: white;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  list-style: none;
+}
+.footer button {
   float: left;
   padding: 8px 16px;
   text-decoration: none;
