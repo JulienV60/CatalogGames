@@ -1,6 +1,7 @@
 import express from "express";
 import nunjucks from "nunjucks";
 import apiCall from "@fewlines-education/request";
+
 ////////////////////////////////////////////////////////
 const app = express();
 app.use(express.static("Public"));
@@ -10,10 +11,13 @@ app.set("view engine", "njk");
 
 ///HOME
 ////////////////////////////////////////////////
+
 app.get("/", (request, response) => {
   response.render("home");
 });
+
 //// GAMES/
+
 app.get("/allGames", (request, response) => {
   apiCall("http://videogame-api.fly.dev/games", (error, body) => {
     if (error) {
@@ -31,6 +35,7 @@ app.get("/allGames", (request, response) => {
 });
 
 ///GAMES/PAGE
+
 app.get("/allGames/:item", (request, response) => {
   const routeParameters = request.params;
   const page = routeParameters.item;
@@ -50,7 +55,10 @@ app.get("/allGames/:item", (request, response) => {
     response.render("allGames", { numberOfPages, datagames, indexPage });
   });
 });
+
 //GAMES/GAME
+
+///////////////////////////////////////////////
 app.get("/allGames/:itemid/:itemname", (request, response) => {
   const routeParameters = request.params;
   const idgame = routeParameters.itemname;
@@ -72,9 +80,10 @@ app.get("/allGames/:itemid/:itemname", (request, response) => {
     });
   });
 });
-///PLATEFORMS
-///////////////////////////////////////////////
 
+///PLATEFORMS
+
+///////////////////////////////////////////////
 app.get("/plateforms", (request, response) => {
   apiCall("http://videogame-api.fly.dev/platforms", (error, body) => {
     if (error) {
@@ -89,7 +98,10 @@ app.get("/plateforms", (request, response) => {
     response.redirect("plateforms/1");
   });
 });
+
 ///PLATEFORMS/PAGE
+
+///////////////////////////////////////////////
 app.get("/plateforms/:item", (request, response) => {
   const routeParameters = request.params;
   const page = routeParameters.item;
@@ -112,12 +124,14 @@ app.get("/plateforms/:item", (request, response) => {
     });
   });
 });
+
 /// PLATEFORM/GAMES/
+
+///////////////////////////////////////////////
 app.get("/Games/:itemname/:itemid/", (request, response) => {
   const routeParameters = request.params;
   const idplateform = routeParameters.itemid;
   const idname = routeParameters.itemname;
-  console.log(routeParameters);
 
   apiCall(`http://videogame-api.fly.dev/games/platforms/${idplateform}`, (error, body) => {
     if (error) {
@@ -135,6 +149,7 @@ app.get("/Games/:itemname/:itemid/", (request, response) => {
 
 ///PLATEFORMS/GAMES/NomDeLaPlateForm/ListeJeux/Page
 
+///////////////////////////////////////////////
 app.get("/Games/:itemname/:itemid/:item", (request, response) => {
   const routeParameters = request.params;
   const idname = routeParameters.itemname;
@@ -156,7 +171,10 @@ app.get("/Games/:itemname/:itemid/:item", (request, response) => {
     response.render("games", { numberOfPagess, id: idplateform, name: idname, listGame: data.games, indexPage });
   });
 });
+
 //// PLATEFORMS/GAMES/GAME
+
+///////////////////////////////////////////////
 app.get("/Game/:itemid/:itemname", (request, response) => {
   const routeParameters = request.params;
   const idgame = routeParameters.itemid;
@@ -177,7 +195,10 @@ app.get("/Game/:itemid/:itemname", (request, response) => {
     });
   });
 });
+
 /// LANCEMENT SERVEUR
+
+///////////////////////////////////////////////
 app.listen(3000, () => {
   console.log("http://localhost:3000");
 });

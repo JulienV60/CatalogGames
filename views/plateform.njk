@@ -9,9 +9,9 @@
 <div class="nav">
     <h1>Platforms</h1>
     <div class="navform">
-     <form method="get" action="/">
-     <button type="submit">Homepage</button>
-    </form>
+      <form method="get" action="/">
+       <button type="submit">Homepage</button>
+      </form>
     </div>
 </div>
 
@@ -19,54 +19,59 @@
 
 
 <div class="container">
-          {%for item in platform %}
-<div class="content">
-<a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
-<img src="{{item.logo.url}}">
 
-</div>
+  {%for item in platform %}
 
-          {% endfor %}
+    <div class="content">
+      <a href="/Games/{{item.name}}/{{item.id}}">{{item.name}} </a>
+      <img src="{{item.logo.url}}">
+    </div>
+
+  {% endfor %}
+
 </div>
 
 <div class="footer">
 
-{%if indexPage == 1 or indexPage == 0 %}
-<button disabled="disabled"><<</button>
-      {% else %}
-<a href="/plateforms/{{numberOfPages[0]}}"><<</a>
-{%endif%}
+  {%if indexPage == 1 or indexPage == 0 %}
+    <button disabled="disabled"><<</button>
+  {% else %}
+   <a href="/plateforms/{{numberOfPages[0]}}"><<</a>
+  {%endif%}
 
   {% if indexPage == 1 or indexPage == 0 %}
-  <button disabled="disabled"><</button>
+    <button disabled="disabled"><</button>
   {% else %}
-<a href="/plateforms/{{indexPage-1}}"><</a>
+    <a href="/plateforms/{{indexPage-1}}"><</a>
   {% endif %}
-      {% set limit = 10 %}
-      {% for page in numberOfPages %}
+
+  {% set limit = 10 %}
+    {% for page in numberOfPages %}
       {% if indexPage >= limit %}
-      {% set iterator = page + indexPage %}
-      {% if iterator <= limit + (indexPage) %}
-      {% if iterator <= numberOfPages.length %}
-       <a href="/plateforms/{{iterator}}">{{iterator}}</a>
-      {% endif %}
-      {% endif %}
+        {% set iterator = page + indexPage %}
+          {% if iterator <= limit + (indexPage) %}
+            {% if iterator <= numberOfPages.length %}
+              <a href="/plateforms/{{iterator}}">{{iterator}}</a>
+            {% endif %}
+          {% endif %}
       {% else %}
-      {% if page<= limit %}
-      <a href="/plateforms/{{page}}">{{page}}</a>
+        {% if page<= limit %}
+          <a href="/plateforms/{{page}}">{{page}}</a>
       {% endif %}
       {% endif %}
-      {% endfor %}
-      {% if indexPage == numberOfPages.length %}
+    {% endfor %}
+
+    {% if indexPage == numberOfPages.length %}
       <button disabled="disabled">></button>
-      {% else %}
+    {% else %}
       <a href="/plateforms/{{indexPage+1}}">></a>
-      {% endif %}
-      {%if indexPage==numberOfPages.length %}
-      <button disabled="disabled">>></button>
-      {% else %}
-<a href="/plateforms/{{numberOfPages.length}}">>></a>
-{%endif%}
+    {% endif %}
+
+  {%if indexPage==numberOfPages.length %}
+    <button disabled="disabled">>></button>
+  {% else %}
+    <a href="/plateforms/{{numberOfPages.length}}">>></a>
+
+  {%endif%}
 </div>
 {% endblock %}
-

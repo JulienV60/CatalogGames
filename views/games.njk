@@ -5,56 +5,57 @@
 {% endblock %}
 
 {% block content %}
-<div class="nav">
-  <h1>Games of {{name}}</h1>
-  <div class="navform">
-     <form method="get" action="/">
-     <button type="submit">Homepage</button>
+  <div class="nav">
+    <h1>Games of {{name}}</h1>
+    <div class="navform">
+    <form method="get" action="/">
+      <button type="submit">Homepage</button>
     </form>
     </div>
-</div>
+  </div>
 
 
 
 
-<div class="container">
+  <div class="container">
     {% for item in listGame %}
-    <div class="content">
-
-          <a href="/Game/{{item.id}}/{{item.name}}">{{item.name}} </a>
-          <img href="{{item.logo.url}}"src="{{item.cover.url}}">
-
-</div>
+      <div class="content">
+        <a href="/Game/{{item.id}}/{{item.name}}">{{item.name}}</a>
+        <img href="{{item.logo.url}}"src="{{item.cover.url}}">
+      </div>
     {% endfor %}
-</div>
-<div class="footer">
 
-{%if indexPage == 1 or indexPage == NaN %}
-<button disabled="disabled"><<</button>
-      {% else %}
-<a href="/Games/{{name}}/{{id}}/{{numberOfPagess[0]}}"><<</a>
- {%endif%}
- {% if indexPage == 1 or indexPage == NaN  %}
+  </div>
+
+  <div class="footer">
+
+  {%if indexPage == 1 or indexPage == NaN %}
+    <button disabled="disabled"><<</button>
+  {% else %}
+    <a href="/Games/{{name}}/{{id}}/{{numberOfPagess[0]}}"><<</a>
+  {%endif%}
+
+  {% if indexPage == 1 or indexPage == NaN  %}
    <button disabled="disabled"><</button>
   {% else %}
-<a href="//Games/{{name}}/{{id}}/{{indexPage-1}}"><</a>
+    <a href="//Games/{{name}}/{{id}}/{{indexPage-1}}"><</a>
   {% endif %}
-      {% set limit = 10 %}
-      {% for page in numberOfPagess %}
+  {% set limit = 10 %}
+    {% for page in numberOfPagess %}
       {% if indexPage >= limit %}
-      {% set iterator = page + indexPage %}
-      {% if iterator <= limit + (indexPage) %}
-      {% if iterator <= numberOfPagess.length %}
-       <a href="/Games/{{name}}/{{id}}/{{iterator}}">{{iterator}}</a>
-      {% endif %}
-      {% endif %}
+        {% set iterator = page + indexPage %}
+          {% if iterator <= limit + (indexPage) %}
+            {% if iterator <= numberOfPagess.length %}
+              <a href="/Games/{{name}}/{{id}}/{{iterator}}">{{iterator}}</a>
+            {% endif %}
+          {% endif %}
       {% else %}
-      {% if page <= limit %}
-    <a href="/Games/{{name}}/{{id}}/{{page}}">{{page}}</a>
-      {% endif %}
-      {% endif %}
-      {% endfor %}
-      {% if indexPage == numberOfPagess.length %}
+    {% if page <= limit %}
+      <a href="/Games/{{name}}/{{id}}/{{page}}">{{page}}</a>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  {% if indexPage == numberOfPagess.length %}
          <button disabled="disabled">></button>
       {% else %}
      <a href="/Games/{{name}}/{{id}}/{{indexPage+1}}">></a>
